@@ -1,0 +1,46 @@
+.related-post-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.related-post-wrapper .related-post {
+    display: block;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    overflow: hidden;
+    background-color: #abd8ff;
+    width: 32%;
+}
+
+.related-post-wrapper .related-post strong {
+    color: #222222;
+}
+
+.related-post-wrapper .related-post a {
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+.related-post-wrapper .related-post a:hover {
+    color: rgb(0, 71, 163);
+}
+
+.related-post-wrapper .related-post img {
+    width: 100%;
+    height: auto;
+}
+
+.related-post-wrapper .related-post li {
+    list-style: none;
+}
+
+.related-post-wrapper .related-post li small {
+    color: rgb(202, 112, 2);
+}
+
+.related-post-wrapper .related-post li i {
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
