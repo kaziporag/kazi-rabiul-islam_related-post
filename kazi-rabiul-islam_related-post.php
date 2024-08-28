@@ -73,6 +73,8 @@
                 $content .= '</div>';
 
                 return $content; // Return the related post
+
+                wp_reset_postdata();
             }
         }
     }
