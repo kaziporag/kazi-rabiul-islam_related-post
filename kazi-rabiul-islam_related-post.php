@@ -13,18 +13,18 @@
 
  include_once(ABSPATH . 'wp-admin/includes/plugin.php'); // Include the plugin file
 
- class KaziRelatedPost {
+ class KaziRelatedPost { // Class KaziRelatedPost
 
-    public function __construct() {
+    public function __construct() { // 
         add_action('init', array($this, 'initialize')); // Initialize the plugin
     }
 
-    public function initialize() {
+    public function initialize() { // Initialize the plugin
         add_filter('the_content',[$this,'display_related_post'], 10, 9); // Display the related post with same category
         add_action('wp_enqueue_scripts', [$this, 'frontend_assets']); // Load the assets
     }
 
-    public function display_related_post( $content ){
+    public function display_related_post( $content ){ // Display the related post with same category
         if( is_single() ) {
             
             $content .= '<h2>'. esc_attr( 'Related Post', 'kazi-rabiul-islam_related-post' ) . '</h2>';
