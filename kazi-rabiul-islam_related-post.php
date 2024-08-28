@@ -3,7 +3,7 @@
  * Plugin Name:       Kazi Rabiul Islam Related Post
  * Plugin URI:        https://wordpress.org/plugins/kazi-rabiul-islam_related-post
  * Description:       Kazi Rabiul Islam Related Post will desplay related posts with same category and rendom posts.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Kazi Rabiul Islam
@@ -15,16 +15,16 @@
 
  class KaziRelatedPost {
 
-    function __construct() {
+    public function __construct() {
         add_action('init', array($this, 'initialize')); // Initialize the plugin
     }
 
-    function initialize() {
+    public function initialize() {
         add_filter('the_content',[$this,'display_related_post'], 10, 9); // Display the related post with same category
         add_action('wp_enqueue_scripts', [$this, 'frontend_assets']); // Load the assets
     }
 
-    function display_related_post( $content ){
+    public function display_related_post( $content ){
         if( is_single() ) {
             
             $content .= '<h2>'. esc_attr( 'Related Post', 'kazi-rabiul-islam_related-post' ) . '</h2>';
@@ -77,7 +77,7 @@
         }
     }
 
-    function frontend_assets() { // Display the related post in frontend
+    public function frontend_assets() { // Display the related post in frontend
 
         $plugin_data = get_plugin_data(__FILE__); // Get the plugin data
         $plugin_version = $plugin_data['Version']; // Get the plugin version
