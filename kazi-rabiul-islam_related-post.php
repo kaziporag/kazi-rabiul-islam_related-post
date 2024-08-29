@@ -16,11 +16,11 @@
  class KaziRelatedPost { // Class KaziRelatedPost
 
     public function __construct() { // 
-        add_action('init', array($this, 'initialize')); // Initialize the plugin
+        add_action('init', [$this, 'initialize']); // Initialize the plugin
     }
 
     public function initialize() { // Initialize the plugin
-        add_filter('the_content',[$this,'display_related_post'], 10, 9); // Display the related post with same category
+        add_filter('the_content',[$this, 'display_related_post'], 10, 9); // Display the related post with same category
         add_action('wp_enqueue_scripts', [$this, 'frontend_assets']); // Load the assets
     }
 
@@ -31,6 +31,11 @@
             $content .= '<div class="related-post-wrapper">';
 
             $related_posts = get_the_terms( get_the_id(), 'category' ); // Get the related post
+
+            if (empty($related_posts)) {
+                $content .= '<p>Sorry, no related posts found.</p>';
+                return $content;
+            }
 
             $rel_array = array(); // array of related post id 
 
@@ -73,9 +78,8 @@
                 $content .= '</div>';
 
                 return $content; // Return the related post
-
-                wp_reset_postdata();
             }
+            wp_reset_postdata();
         }
     }
 
